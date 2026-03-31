@@ -1,1 +1,8 @@
 node_modules/
+frontend/node_modules/
+training/data/raw/*
+!training/data/raw/.gitkeep
+training/data/processed/*
+!training/data/processed/.gitkeep
+training/models/*
+!training/models/.gitkeep
