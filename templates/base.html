@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" class="system">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AntiqueCoders{% endblock %}</title>
+    {% load static %}
+    <link href="{% static 'css/output.css' %}" rel="stylesheet">
+    <script>
+        // Apply theme early to prevent flash
+        (function() {
+            var theme = localStorage.getItem('theme');
+            var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (theme === 'dark' || (!theme && systemDark)) {
+                document.documentElement.classList.add('dark');
+            } else if (theme === 'system' && systemDark) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
+</head>
+<body class="bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text transition-colors duration-200 antialiased h-screen overflow-hidden flex flex-col md:flex-row">
+    
+    <!-- Sidebar -->
+    {% block sidebar %}
+    {% endblock %}
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col h-full bg-light-bg dark:bg-dark-bg relative">
+        <!-- Header -->
+        <header class="flex justify-between items-center p-4">
+            <!-- Left header (mobile menu or ChatGPT Auto text) -->
+            <div class="flex items-center gap-2">
+                <span class="text-xl font-semibold opacity-80 pl-2">ChatGPT Auto <span class="text-sm">v</span></span>
+            </div>
+
+            <!-- Right header (Themes & Profile) -->
+            <div class="flex items-center space-x-4">
+                
+                <!-- Theme Select -->
+                <div class="relative">
+                    <select id="theme-selector" class="appearance-none bg-transparent border border-gray-300 dark:border-gray-600 rounded-md py-1 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer dark:text-white pb-1">
+                        <option value="system">System</option>
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                </div>
+
+                <!-- Icons (e.g. Add Plus) -->
+                <button class="hidden sm:inline-flex items-center px-3 py-1 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium rounded-full border border-gray-200 dark:border-gray-700 transition">
+                    <svg class="w-4 h-4 mr-1 text-purple-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                    Get Plus
+                </button>
+
+                <!-- Profile -->
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold cursor-pointer">
+                    C
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Body -->
+        <main class="flex-1 overflow-y-auto no-scrollbar relative flex items-center justify-center">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+
+    <script>
+        const themeSelector = document.getElementById('theme-selector');
+        
+        // Initialize selector value
+        const currentTheme = localStorage.getItem('theme') || 'system';
+        themeSelector.value = currentTheme;
+
+        themeSelector.addEventListener('change', function(e) {
+            const val = e.target.value;
+            localStorage.setItem('theme', val);
+            if (val === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else if (val === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else {
+                // System
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+        });
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (localStorage.getItem('theme') === 'system' || !localStorage.getItem('theme')) {
+                if (e.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
