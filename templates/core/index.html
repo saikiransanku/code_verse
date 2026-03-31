@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+<div class="hidden md:flex flex-col w-64 bg-sidebar-light dark:bg-sidebar-dark h-full border-r border-gray-200 dark:border-gray-800 transition-colors p-3">
+    
+    <!-- Top section -->
+    <div class="flex items-center justify-between mb-4 px-2 pt-2">
+        <a href="#" class="flex items-center space-x-2 text-gray-800 dark:text-gray-100 font-medium hover:bg-gray-200 dark:hover:bg-gray-800 py-1 px-2 rounded-lg transition text-base">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+            <span>New chat</span>
+        </a>
+        <button class="text-gray-500 hover:text-black dark:hover:text-white transition cursor-pointer">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Search / tools list -->
+    <nav class="flex-1 overflow-y-auto space-y-1">
+        <a href="#" class="flex items-center gap-3 px-2 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            Search chats
+        </a>
+        <a href="#" class="flex items-center gap-3 px-2 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            Images
+        </a>
+        <a href="#" class="flex items-center gap-3 px-2 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+            Apps
+        </a>
+        <a href="#" class="flex items-center gap-3 px-2 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            Deep research
+        </a>
+        <a href="#" class="flex items-center gap-3 px-2 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+            Codex
+        </a>
+        <a href="#" class="flex items-center gap-3 px-2 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+            Projects
+        </a>
+
+        <!-- GPTs section -->
+        <div class="pt-4 pb-1 group">
+            <div class="px-2 text-xs font-semibold text-gray-500 mb-1">GPTs</div>
+            <a href="#" class="flex items-center gap-3 px-2 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg">
+                <div class="h-5 w-5 bg-gradient-to-r from-green-400 to-blue-500 rounded-full"></div>
+                DALL·E
+            </a>
+            <a href="#" class="flex items-center gap-3 px-2 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                Explore GPTs
+            </a>
+        </div>
+
+        <!-- Recent Chats -->
+        <div class="pt-4 pb-1">
+            <div class="px-2 text-xs font-semibold text-gray-500 mb-1">Your chats</div>
+            <a href="#" class="block px-2 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg truncate">Internship project titles</a>
+            <a href="#" class="block px-2 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg truncate">Architecture diagram generation</a>
+            <a href="#" class="block px-2 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg truncate">Image generation request</a>
+            <a href="#" class="block px-2 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg truncate">Solve MongoDB import issue</a>
+        </div>
+
+    </nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center w-full max-w-2xl px-4 h-full">
+    <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-8 transition-colors text-center w-full relative -top-12">
+        <span class="block dark:hidden">Ready when you are.</span>
+        <span class="hidden dark:block">What can I help with?</span>
+    </h1>
+
+    <div class="w-full relative shadow-sm border border-gray-200 dark:border-gray-700 rounded-full transition-colors bg-white dark:bg-gray-800 flex items-center p-2 focus-within:ring-1 focus-within:ring-black dark:focus-within:ring-gray-400">
+        <button class="p-2 text-gray-400 hover:text-black dark:hover:text-white transition">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+        </button>
+        <input type="text" placeholder="Ask anything" class="flex-1 px-4 bg-transparent outline-none text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400">
+        
+        <div class="flex items-center space-x-1 p-1">
+            <button class="p-2 text-gray-500 hover:text-black dark:hover:text-white transition">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+                </svg>
+            </button>
+            <button class="w-8 h-8 rounded-full bg-black dark:bg-[#e49e00] text-white dark:text-black flex items-center justify-center transition hover:opacity-90">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 3v18m-9-9h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

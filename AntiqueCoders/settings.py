@@ -55,7 +55,7 @@ ROOT_URLCONF = 'AntiqueCoders.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,4 +116,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+<<<<<<< HEAD
 
+=======
+STATICFILES_DIRS = [BASE_DIR / 'static']
+>>>>>>> 904af5c7f85374470727983a88789afb307b1868
