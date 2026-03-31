@@ -124,14 +124,36 @@
 </header>
 
 <!-- Main Chat Area -->
-<main class="flex-1 flex flex-col items-center justify-center -mt-16 px-4">
-    <!-- Center text -->
-    <h1 class="text-[28px] sm:text-[32px] font-semibold mb-10 text-center text-gray-800 dark:text-gray-200 font-sans tracking-tight">
-        What can I help with?
-    </h1>
+<main class="flex-1 flex flex-col w-full max-w-[900px] mx-auto px-4 pb-6 pt-2">
+    {% if conversation %}
+    <div class="flex-1 w-full max-w-[768px] mx-auto overflow-y-auto pr-1 space-y-6">
+        {% for chat in conversation %}
+        <div class="space-y-3">
+            <div class="flex justify-end">
+                <div class="max-w-[85%] rounded-3xl rounded-br-md bg-gray-900 text-white px-5 py-3 text-sm sm:text-base shadow-sm dark:bg-white dark:text-black">
+                    {{ chat.prompt }}
+                </div>
+            </div>
+            {% if chat.response %}
+            <div class="flex justify-start">
+                <div class="max-w-[85%] rounded-3xl rounded-bl-md bg-gray-100 dark:bg-[#1f1f1f] text-gray-800 dark:text-gray-200 px-5 py-3 text-sm sm:text-base shadow-sm border border-gray-200 dark:border-[#2f2f2f]">
+                    {{ chat.response }}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="flex-1 flex flex-col items-center justify-center">
+        <h1 class="text-[28px] sm:text-[32px] font-semibold mb-10 text-center text-gray-800 dark:text-gray-200 font-sans tracking-tight">
+            What can I help with?
+        </h1>
+    </div>
+    {% endif %}
 
     <!-- Input Box -->
-    <form method="POST" action="/" class="w-full max-w-[768px] relative">
+    <form method="POST" action="/" class="w-full max-w-[768px] relative mx-auto mt-6">
         {% csrf_token %}
         <div class="relative flex items-end bg-light-surface dark:bg-dark-surface rounded-[24px] p-2 transition-all shadow-sm border border-transparent dark:border-dark-border">
             <!-- Left Actions -->

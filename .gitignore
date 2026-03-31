@@ -6,3 +6,6 @@ training/data/processed/*
 !training/data/processed/.gitkeep
 training/models/*
 !training/models/.gitkeep
+backend/.env
+*.pyc
+__pycache__/
