@@ -1,8 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import ChatQuery
 
-<<<<<<< HEAD
 def home(request):
-=======
-def index(request):
->>>>>>> 904af5c7f85374470727983a88789afb307b1868
-    return render(request, 'core/index.html')
+    if not request.session.session_key:
+        request.session.create()
+    
+    session_key = request.session.session_key
+    
+    if request.method == "POST":
+        prompt = request.POST.get('prompt', '').strip()
+        if prompt:
+            # Simulated AI Response
+            fake_response = f"Simulated AI analysis for: '{prompt}'. (AI integration pending)"
+            ChatQuery.objects.create(session_key=session_key, prompt=prompt, response=fake_response)
+        return redirect('home')
+
+    history = ChatQuery.objects.filter(session_key=session_key)
+    
+    return render(request, 'core/index.html', {'history': history})
